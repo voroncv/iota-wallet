@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
 import Image from 'react-native-remote-svg';
 
+import Loader from './layouts/Loader';
+
 function wp (percentage) {
     const value = (percentage * viewportWidth) / 100;
     return Math.round(value);
@@ -13,7 +15,8 @@ export default class LoginScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            seed: ''
+            seed: '',
+            isLoader: false
         };
 
         this.checkSeed = this.checkSeed.bind(this);
@@ -32,6 +35,12 @@ export default class LoginScreen extends React.Component {
     }
 
     render() {
+        if (this.state.isLoader) {
+            return (
+                <Loader />
+            );
+        }
+
         return (
             <View style={styles.container}>
                 <StatusBar barStyle='dark-content' />
