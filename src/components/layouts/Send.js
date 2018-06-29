@@ -9,8 +9,16 @@ export default class Send extends React.Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.container} activeOpacity={0.9}>
-                <Text style={styles.title}>SEND</Text>
+            <TouchableOpacity
+                style={styles.container}
+                activeOpacity={0.9}
+                onPress={e => this.props.openPage('Send')}
+            >
+                <Text
+                    style={styles.title}
+                >
+                    SEND
+                </Text>
             </TouchableOpacity>
         );
     }

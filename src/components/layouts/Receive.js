@@ -9,8 +9,16 @@ export default class Receive extends React.Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.container} activeOpacity={0.9} onPress={e => this.props.openPage('Receive')}>
-                <Text style={styles.title}>RECEIVE</Text>
+            <TouchableOpacity
+                style={styles.container}
+                activeOpacity={0.9}
+                onPress={e => this.props.openPage('Receive')}
+            >
+                <Text
+                    style={styles.title}
+                >
+                    RECEIVE
+                </Text>
             </TouchableOpacity>
         );
     }

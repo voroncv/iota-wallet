@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Alert, StatusBar, Dimensions } from 'react-native';
-import QRCode from 'react-native-qrcode-svg';
+import { StyleSheet, Text, View, Alert, StatusBar, Dimensions, TouchableOpacity } from 'react-native';
 
 function wp (percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -35,11 +34,12 @@ export default class ReceiveScreen extends React.Component {
                         YIAZDIOYWUMUQZOP9GLXNVJGEYAHTKEJO9QAGVZUXQWMWHJSBGOIISI9GNYCUVJBISKWAHT9MRUITKYJXDVZEQBRWA
                     </Text>
                 </View>
-                <View>
-                    <QRCode
-                        value="http://awesome.link.qr"
-                    />
-                </View>
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    style={{ backgroundColor: '#3b2a7a', width: wp(100), padding: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 20 }}
+                >
+                    <Text style={{ color: '#FFFFFF', textAlign: 'center', fontSize: 24 }}>Copy to clipboard</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     addressBlock: {
         width: wp(90),
         borderColor: '#FFFFFF',
-        borderWidth: 2,
+        borderWidth: 1,
         padding: 10,
         borderRadius: 4
     },

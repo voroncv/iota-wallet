@@ -9,8 +9,16 @@ export default class History extends React.Component {
 
     render() {
         return (
-            <TouchableOpacity style={styles.container} activeOpacity={0.9}>
-                <Text style={styles.title}>HISTORY</Text>
+            <TouchableOpacity
+                style={styles.container}
+                activeOpacity={0.9}
+                onPress={e => this.props.openPage('History')}
+            >
+                <Text
+                    style={styles.title}
+                >
+                    HISTORY
+                </Text>
             </TouchableOpacity>
         );
     }

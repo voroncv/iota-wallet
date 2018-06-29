@@ -33,9 +33,9 @@ export default class WalletsScreen extends React.Component {
             <View style={styles.container}>
                 <Navbar logout={this.logout} />
                 <Balance />
-                <Send />
+                <Send openPage={this.openPage} />
                 <Receive openPage={this.openPage} />
-                <History />
+                <History openPage={this.openPage} />
             </View>
         );
     }

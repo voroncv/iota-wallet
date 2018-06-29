@@ -7,11 +7,15 @@ YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTIm
 import LoginScreen from './src/components/LoginScreen';
 import WalletScreen from './src/components/WalletScreen';
 import ReceiveScreen from './src/components/ReceiveScreen';
+import SendScreen from './src/components/SendScreen';
+import HistoryScreen from './src/components/HistoryScreen';
 
 const RootStack = createStackNavigator({
     Login: { screen: LoginScreen },
     Wallet: { screen: WalletScreen },
-    Receive: { screen: ReceiveScreen }
+    Receive: { screen: ReceiveScreen },
+    Send: { screen: SendScreen },
+    History: { screen: HistoryScreen },
 }, {
     initialRouteName: 'Login'
 }, {
