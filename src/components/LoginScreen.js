@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
 import Image from 'react-native-remote-svg';
 
 function wp (percentage) {
@@ -34,6 +34,7 @@ export default class LoginScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar barStyle='dark-content' />
                 <View style={{ paddingBottom: 50 }}>
                     <Image
                         source={require('../assets/images/iota_logo.svg')}

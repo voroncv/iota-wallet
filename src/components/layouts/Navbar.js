@@ -18,17 +18,20 @@ export default class Navbar extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text></Text>
+                <TouchableOpacity>
+                    <Image
+                        source={require('../../assets/images/menu.svg')}
+                        style={styles.menuIcon}
+                    />
+                </TouchableOpacity>
                 <Image
                     source={require('../../assets/images/iota_logo_white.svg')}
-                    style={styles.logo}
+                    style={styles.logoIcon}
                 />
-                <TouchableOpacity
-                    onPress={this.props.logout}
-                >
+                <TouchableOpacity onPress={this.props.logout}>
                     <Image
                         source={require('../../assets/images/logout.svg')}
-                        style={{width: 20, height: 20}}
+                        style={styles.logoutIcon}
                     />
                 </TouchableOpacity>
             </View>
@@ -49,8 +52,16 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10
     },
-    logo: {
+    logoIcon: {
         width: 100,
         height: 80
     },
+    menuIcon: {
+        width: 25,
+        height: 25
+    },
+    logoutIcon: {
+        width: 20,
+        height: 20
+    }
 });
