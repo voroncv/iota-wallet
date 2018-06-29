@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, Alert } from 'react-native';
 
 import Navbar from './layouts/Navbar';
 import Balance from './layouts/Balance';
+import Send from './layouts/Send';
+import Receive from './layouts/Receive';
+import History from './layouts/History';
 
 export default class WalletsScreen extends React.Component {
     constructor(props) {
@@ -10,6 +13,7 @@ export default class WalletsScreen extends React.Component {
         this.state = {};
 
         this.logout = this.logout.bind(this);
+        this.openPage = this.openPage.bind(this);
     }
 
     static navigationOptions = {
@@ -17,7 +21,11 @@ export default class WalletsScreen extends React.Component {
     };
 
     logout() {
-        this.props.navigation.push('Login');
+        this.props.navigation.navigate('Login');
+    }
+
+    openPage(e) {
+        this.props.navigation.navigate(e);
     }
 
     render() {
@@ -25,6 +33,9 @@ export default class WalletsScreen extends React.Component {
             <View style={styles.container}>
                 <Navbar logout={this.logout} />
                 <Balance />
+                <Send />
+                <Receive openPage={this.openPage} />
+                <History />
             </View>
         );
     }

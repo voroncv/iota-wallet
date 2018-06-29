@@ -8,7 +8,7 @@ function wp (percentage) {
 
 const { width: viewportWidth } = Dimensions.get('window');
 
-export default class Navbar extends React.Component {
+export default class Balance extends React.Component {
     constructor(props: Object) {
         super(props);
         this.state = {};
@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         color: '#FFFFFF',
-        fontWeight: 'bold'
+        fontWeight: '500'
     },
     balance: {
         fontSize: 60,
         color: '#FFFFFF',
-        fontWeight: 'bold'
+        fontWeight: '500'
     }
 });

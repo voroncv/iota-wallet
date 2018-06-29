@@ -1,6 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import Image from 'react-native-remote-svg';
+
+function wp (percentage) {
+    const value = (percentage * viewportWidth) / 100;
+    return Math.round(value);
+}
+
+const { width: viewportWidth } = Dimensions.get('window');
 
 export default class Navbar extends React.Component {
     constructor(props) {
@@ -32,7 +39,7 @@ export default class Navbar extends React.Component {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: 60,
+        height: '8%',
         backgroundColor: '#000000',
         marginTop: 20,
         alignItems: 'center',
