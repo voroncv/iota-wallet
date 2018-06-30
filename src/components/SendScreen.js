@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Alert, StatusBar, Dimensions, TextInput, TouchableOpacity } from 'react-native';
 import Image from 'react-native-remote-svg';
 
+import UnitsDropdown from './layouts/UnitsDropdown';
+
 function wp (percentage) {
     const value = (percentage * viewportWidth) / 100;
     return Math.round(value);
@@ -14,11 +16,8 @@ export default class SendScreen extends React.Component {
         super(props);
         this.state = {
             recipientAddress: '',
-            count: '',
-            isOpenDropDown: false
+            count: ''
         };
-
-        this.toggleDropDown = this.toggleDropDown.bind(this);
     }
 
     static navigationOptions = {
@@ -32,14 +31,7 @@ export default class SendScreen extends React.Component {
         headerTintColor: '#FFFFFF',
     };
 
-    toggleDropDown() {
-        this.setState({
-            isOpenDropDown: !this.state.isOpenDropDown
-        });
-    }
-
     render() {
-        let isOpenDropDown = this.state.isOpenDropDown === true ? 1 : 0;
         return (
             <View style={styles.container}>
                 <StatusBar barStyle='light-content' />
@@ -59,34 +51,7 @@ export default class SendScreen extends React.Component {
                             onChangeText={(count) => this.setState({count})}
                             value={this.state.count}
                         />
-                        <TouchableOpacity style={{height: 40, borderWidth: 1, width: wp(20), marginBottom: 20, padding: 6, borderBottomColor: '#FFFFFF', borderBottomWidth: 1, borderTopColor: 'transparent', borderLeftColor: 'transparent', borderRightColor: 'transparent' }}
-                            onPress={this.toggleDropDown}
-                        >
-                            <Text style={{ color: '#FFFFFF', fontSize: 20, fontWeight: 'bold' }}>i</Text>
-                            <Image
-                                    source={require('../assets/images/down_arrow.svg')}
-                                    style={{ width: 20, height: 20, position: 'absolute', left: 15, top: 5 }}
-                                />
-                            <View
-                                style={{ width: wp(20), position: 'absolute', top: 50, borderRadius: 6, opacity: isOpenDropDown }}
-                            >
-                                <TouchableOpacity style={{ width: wp(20), height: 40, backgroundColor: '#FFB74D', borderTopLeftRadius: 6, borderTopRightRadius: 6, paddingLeft: 20, display: 'flex', justifyContent: 'center' }}>
-                                    <Text style={{ color: '#FFFFFF', fontSize: 26 }}>i</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={{ width: wp(20), height: 40, backgroundColor: '#FFA726', paddingLeft: 20, display: 'flex', justifyContent: 'center' }}>
-                                    <Text style={{ color: '#FFFFFF', fontSize: 26 }}>Ki</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={{ width: wp(20), height: 40, backgroundColor: '#FF9800', paddingLeft: 20, display: 'flex', justifyContent: 'center' }}>
-                                    <Text style={{ color: '#FFFFFF', fontSize: 26 }}>Mi</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={{ width: wp(20), height: 40, backgroundColor: '#FB8C00', paddingLeft: 20, display: 'flex', justifyContent: 'center' }}>
-                                    <Text style={{ color: '#FFFFFF', fontSize: 26 }}>Gi</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={{ width: wp(20), height: 40, backgroundColor: '#F57C00', borderBottomLeftRadius: 6, borderBottomRightRadius: 6, paddingLeft: 20, display: 'flex', justifyContent: 'center' }}>
-                                    <Text style={{ color: '#FFFFFF', fontSize: 26 }}>Ti</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </TouchableOpacity>
+                        <UnitsDropdown />
                     </View>
                 </View>
                 <TouchableOpacity
