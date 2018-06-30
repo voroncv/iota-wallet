@@ -10,6 +10,14 @@ import ReceiveScreen from './src/components/ReceiveScreen';
 import SendScreen from './src/components/SendScreen';
 import HistoryScreen from './src/components/HistoryScreen';
 
+const transitionConfig = () => {
+  return {
+    transitionSpec: {
+      duration: 0
+    }
+  }
+}
+
 const RootStack = createStackNavigator({
     Login: { screen: LoginScreen },
     Wallet: { screen: WalletScreen },
@@ -17,11 +25,8 @@ const RootStack = createStackNavigator({
     Send: { screen: SendScreen },
     History: { screen: HistoryScreen },
 }, {
-    initialRouteName: 'Login'
-}, {
-    transitionConfig: () => ({
-        screenInterpolator: () => null
-    }),
+    initialRouteName: 'Login',
+    transitionConfig,
 });
 
 export default class App extends React.Component {
