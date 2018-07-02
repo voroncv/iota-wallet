@@ -27,7 +27,7 @@ export default class Balance extends React.Component {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: '23%',
+        height: '22.5%',
         backgroundColor: '#4DB6AC',
         padding: 10,
         justifyContent: 'space-around'

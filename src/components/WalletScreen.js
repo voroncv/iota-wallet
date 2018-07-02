@@ -1,23 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
+import SideMenu from 'react-native-side-menu';
 
 import Navbar from './layouts/Navbar';
 import Balance from './layouts/Balance';
 import Send from './layouts/Send';
 import Receive from './layouts/Receive';
 import History from './layouts/History';
+import LeftMenu from './layouts/LeftMenu';
 
 export default class WalletsScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            isOpenLeftMenu: false
+        };
 
         this.logout = this.logout.bind(this);
         this.openPage = this.openPage.bind(this);
+        this.openLeftMenu = this.openLeftMenu.bind(this);
     }
 
     static navigationOptions = {
-        header: null
+        header: null,
+        headerLeft: null,
+        gesturesEnabled: false,
     };
 
     logout() {
@@ -28,15 +35,29 @@ export default class WalletsScreen extends React.Component {
         this.props.navigation.navigate(e);
     }
 
+    openLeftMenu() {
+        this.setState({
+            isOpenLeftMenu: true
+        })
+    }
+
     render() {
         return (
-            <View style={styles.container}>
-                <Navbar logout={this.logout} />
-                <Balance />
-                <Send openPage={this.openPage} />
-                <Receive openPage={this.openPage} />
-                <History openPage={this.openPage} />
-            </View>
+            <SideMenu
+                menu={<LeftMenu />}
+                isOpen={this.state.isOpenLeftMenu}
+            >
+                <View style={styles.container}>
+                    <Navbar
+                        logout={this.logout}
+                        openLeftMenu={this.openLeftMenu}
+                    />
+                    <Balance />
+                    <Send openPage={this.openPage} />
+                    <Receive openPage={this.openPage} />
+                    <History openPage={this.openPage} />
+                </View>
+            </SideMenu>
         );
     }
 }

@@ -18,7 +18,7 @@ export default class Navbar extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={this.props.openLeftMenu}>
                     <Image
                         source={require('../../assets/images/menu.svg')}
                         style={styles.menuIcon}
@@ -42,7 +42,7 @@ export default class Navbar extends React.Component {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: '8%',
+        height: '10%',
         backgroundColor: '#000000',
         marginTop: 20,
         alignItems: 'center',

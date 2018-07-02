@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Alert, StatusBar, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Alert, StatusBar, Dimensions, TouchableOpacity, Clipboard } from 'react-native';
 
 function wp (percentage) {
     const value = (percentage * viewportWidth) / 100;
@@ -11,7 +11,11 @@ const { width: viewportWidth } = Dimensions.get('window');
 export default class ReceiveScreen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            address: 'YIAZDIOYWUMUQZOP9GLXNVJGEYAHTKEJO9QAGVZUXQWMWHJSBGOIISI9GNYCUVJBISKWAHT9MRUITKYJXDVZEQBRWA'
+        };
+
+        this.copyToClipboard = this.copyToClipboard.bind(this);
     }
 
     static navigationOptions = {
@@ -25,16 +29,22 @@ export default class ReceiveScreen extends React.Component {
         headerTintColor: '#FFFFFF',
     };
 
+    copyToClipboard = async () => {
+        await Clipboard.setString(this.state.address);
+        return Alert.alert('Copied to Clipboard');
+    };
+
     render() {
         return (
             <View style={styles.container}>
                 <StatusBar barStyle='light-content' />
                 <View style={styles.addressBlock}>
                     <Text style={styles.addressBlockText}>
-                        YIAZDIOYWUMUQZOP9GLXNVJGEYAHTKEJO9QAGVZUXQWMWHJSBGOIISI9GNYCUVJBISKWAHT9MRUITKYJXDVZEQBRWA
+                        {this.state.address}
                     </Text>
                 </View>
                 <TouchableOpacity
+                    onPress={this.copyToClipboard}
                     activeOpacity={0.8}
                     style={{ backgroundColor: '#3b2a7a', width: wp(100), padding: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 20 }}
                 >

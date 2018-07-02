@@ -27,7 +27,7 @@ export default class Send extends React.Component {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: '23%',
+        height: '22.5%',
         backgroundColor: '#26A69A',
         padding: 10
     },
