@@ -10,7 +10,10 @@ export default class WalletsScreen extends React.Component {
     render() {
         return (
             <View style={styles.menuContainer}>
-                <TouchableOpacity style={{ width: '100%', backgroundColor: '#CCCCCC', padding: 10 }}>
+                <TouchableOpacity
+                    onPress={this.props.logout}
+                    style={{ width: '100%', backgroundColor: '#CCCCCC', padding: 10 }}
+                >
                     <Text style={{ fontSize: 18 }}>Logout</Text>
                 </TouchableOpacity>
             </View>

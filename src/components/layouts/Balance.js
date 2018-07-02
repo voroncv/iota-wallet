@@ -6,6 +6,13 @@ function wp (percentage) {
     return Math.round(value);
 }
 
+function parseBalance (balance) {
+    if (balance === 0) {
+        return 0;
+    }
+    return Number(balance / 1000000);
+}
+
 const { width: viewportWidth } = Dimensions.get('window');
 
 export default class Balance extends React.Component {
@@ -18,7 +25,7 @@ export default class Balance extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>BALANCE</Text>
-                <Text style={styles.balance}>10.5 Mi</Text>
+                <Text style={styles.balance}>{parseBalance(this.props.accountBalance)} Mi</Text>
             </View>
         );
     }

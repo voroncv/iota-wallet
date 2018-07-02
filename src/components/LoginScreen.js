@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, TextInput, TouchableOpacity, Alert, StatusBar } from 'react-native';
 import Image from 'react-native-remote-svg';
+import ls from 'react-native-local-storage';
 
 import Loader from './layouts/Loader';
 
@@ -30,7 +31,32 @@ export default class LoginScreen extends React.Component {
         if (this.state.seed === '') {
             return Alert.alert('Enter SEED')
         } else {
-            return this.props.navigation.push('Wallet', { animation: null });
+            this.setState({ isLoader: true });
+            return fetch('http://localhost:3000/getAccountData', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    seed: this.state.seed,
+                }),
+            })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ isLoader: false });
+                if (responseJson.isError) {
+                    return Alert.alert(responseJson.message);
+                } else {
+                    ls.save('IOTASeed', this.state.seed).then(() => {
+                        return this.props.navigation.push('Wallet');
+                    });
+                }
+            })
+            .catch((error) => {
+                this.setState({ isLoader: false });
+                return Alert.alert('ERROR')
+            });
         }
     }
 
